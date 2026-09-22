@@ -82,13 +82,22 @@
         }
 
         .content-columns {
-            display: column;
+            display: block;
             column-count: 2;
             column-gap: 25px;
             column-rule: 1px solid #bbb;
             text-align: justify;
             font-size: 0.95rem;
             line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .content-columns {
+                column-count: 1;
+            }
+            h1.title {
+                font-size: 3rem;
+            }
         }
 
         .post-container {
