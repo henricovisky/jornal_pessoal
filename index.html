@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vintage Gazette</title>
+    <style>
+        @import url('https://googleapis.com');
+
+        body {
+            background-color: #f4eee1;
+            color: #2b2b2b;
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .newspaper {
+            width: 100%;
+            max-width: 900px;
+            background: #fdfbf7;
+            padding: 40px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+            border: 1px solid #dcd6cd;
+            position: relative;
+        }
+
+        .newspaper::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(#d3cbbd 0.75px, transparent 0.75px);
+            background-size: 15px 15px;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 4px double #2b2b2b;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .date-section {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid #2b2b2b;
+            border-top: 1px solid #2b2b2b;
+            padding: 4px 0;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        h1.title {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 4.5rem;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        .sub-header {
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .controls select {
+            padding: 5px;
+            font-family: 'Playfair Display', serif;
+            border: 1px solid #2b2b2b;
+            background-color: #fdfbf7;
+        }
+
+        .content-columns {
+            display: column;
+            column-count: 2;
+            column-gap: 25px;
+            column-rule: 1px solid #bbb;
+            text-align: justify;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .post-container {
+            break-inside: avoid-column;
+            margin-bottom: 20px;
+        }
+
+        .content-columns h2 {
+            font-size: 1.3rem;
+            margin-top: 0;
+            line-height: 1.2;
+            border-bottom: 1px solid #2b2b2b;
+            padding-bottom: 5px;
+        }
+
+        .content-columns p {
+            margin-bottom: 15px;
+            text-indent: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="newspaper">
+        <header>
+            <div class="date-section">
+                <span>Edição Nº 4.290</span>
+                <span>The Vintage Gazette</span>
+                <span>Dois Centavos</span>
+            </div>
+            <h1 class="title">The Daily Chronicle</h1>
+            <div class="sub-header">"Verdade, Honra e Notícias para Todos os lares"</div>
+        </header>
+
+        <div class="controls">
+            <label for="date-filter">Filtrar por data: </label>
+            <select id="date-filter" onchange="filterPosts()">
+                <option value="all">Todas as datas</option>
+            </select>
+        </div>
+
+        <div class="content-columns" id="news-container">
+            <!-- As notícias serão carregadas aqui via JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Dados estáticos temporários extraídos de historico.json (usando fetch se rodar no servidor)
+        let postsData = [];
+
+        async function carregarHistorico() {
+            try {
+                const response = await fetch('historico.json');
+                const data = await response.json();
+                postsData = data.posts;
+                popularFiltro();
+                renderizarPosts(postsData);
+            } catch (error) {
+                console.error("Erro ao carregar o histórico:", error);
+                document.getElementById('news-container').innerHTML = "<p>Não foi possível carregar as notícias de hoje.</p>";
+            }
+        }
+
+        function popularFiltro() {
+            const filter = document.getElementById('date-filter');
+            const datasUnicas = [...new Set(postsData.map(post => post.date))];
+            
+            datasUnicas.sort().reverse().forEach(date => {
+                const option = document.createElement('option');
+                option.value = date;
+                option.textContent = date;
+                filter.appendChild(option);
+            });
+        }
+
+        function filterPosts() {
+            const selectedDate = document.getElementById('date-filter').value;
+            if (selectedDate === 'all') {
+                renderizarPosts(postsData);
+            } else {
+                const filtrados = postsData.filter(post => post.date === selectedDate);
+                renderizarPosts(filtrados);
+            }
+        }
+
+        function renderizarPosts(posts) {
+            const container = document.getElementById('news-container');
+            container.innerHTML = '';
+            
+            if (posts.length === 0) {
+                container.innerHTML = '<p>Nenhuma notícia encontrada para este filtro.</p>';
+                return;
+            }
+
+            posts.forEach(post => {
+                const article = document.createElement('div');
+                article.className = 'post-container';
+                article.innerHTML = `
+                    <h2>${post.title}</h2>
+                    <p><em>${post.date}</em></p>
+                    <p>${post.content}</p>
+                `;
+                container.appendChild(article);
+            });
+        }
+
+        // Iniciar
+        carregarHistorico();
+    </script>
+</body>
+</html>
