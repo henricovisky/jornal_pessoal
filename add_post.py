@@ -2,9 +2,11 @@ import sys
 import json
 import datetime
 import subprocess
+import os
 
 def add_post(title, html_content):
-    json_path = "/home/ubuntu/jornal_pessoal/historico.json"
+    repo_dir = os.path.dirname(os.path.abspath(__file__))
+    json_path = os.path.join(repo_dir, "historico.json")
     
     with open(json_path, 'r') as f:
         data = json.load(f)
@@ -20,9 +22,9 @@ def add_post(title, html_content):
     with open(json_path, 'w') as f:
         json.dump(data, f, indent=2)
         
-    subprocess.run(["git", "add", "historico.json"], cwd="/home/ubuntu/jornal_pessoal")
-    subprocess.run(["git", "commit", "-m", f"Auto-post: {title}"], cwd="/home/ubuntu/jornal_pessoal")
-    subprocess.run(["git", "push", "origin", "master"], cwd="/home/ubuntu/jornal_pessoal")
+    subprocess.run(["git", "add", "historico.json"], cwd=repo_dir)
+    subprocess.run(["git", "commit", "-m", f"Auto-post: {title}"], cwd=repo_dir)
+    subprocess.run(["git", "push", "origin", "master"], cwd=repo_dir)
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:

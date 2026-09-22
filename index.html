@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Vintage Gazette</title>
     <style>
-        @import url('https://googleapis.com');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=UnifrakturMaguntia&display=swap');
 
         body {
-            background-color: #f4eee1;
-            color: #2b2b2b;
+            background-color: #e4d7c5; /* Cor de fundo mais escura para destacar o papel */
+            color: #1a1a1a;
             font-family: 'Playfair Display', serif;
             margin: 0;
             padding: 20px;
@@ -19,103 +19,178 @@
 
         .newspaper {
             width: 100%;
-            max-width: 900px;
-            background: #fdfbf7;
-            padding: 40px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.15);
-            border: 1px solid #dcd6cd;
+            max-width: 1000px;
+            background: #f4ebd8; /* Cor de papel envelhecido mais autêntica */
+            padding: 40px 60px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            border: 1px solid #c9bda5;
             position: relative;
         }
 
+        /* Ruído/Textura de papel SVG */
         .newspaper::before {
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(#d3cbbd 0.75px, transparent 0.75px);
-            background-size: 15px 15px;
-            opacity: 0.15;
+            background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.06"/%3E%3C/svg%3E');
             pointer-events: none;
+            z-index: 1;
         }
 
         header {
             text-align: center;
-            border-bottom: 4px double #2b2b2b;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
+            border-top: 8px solid #1a1a1a; /* Faixa grossa no topo */
+            border-bottom: 4px double #1a1a1a;
+            padding: 15px 0;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
         }
 
         .date-section {
             display: flex;
             justify-content: space-between;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            border-bottom: 1px solid #2b2b2b;
-            border-top: 1px solid #2b2b2b;
-            padding: 4px 0;
-            margin-bottom: 15px;
-            font-weight: bold;
+            border-bottom: 2px solid #1a1a1a;
+            padding: 5px 0;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         h1.title {
             font-family: 'UnifrakturMaguntia', cursive;
-            font-size: 4.5rem;
+            font-size: 6rem;
             margin: 0;
-            letter-spacing: 2px;
+            line-height: 1;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
         }
 
         .sub-header {
-            font-size: 0.9rem;
+            font-size: 1.2rem;
             font-style: italic;
-            margin-top: 5px;
+            margin-top: 15px;
+            font-weight: bold;
         }
 
         .controls {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             text-align: center;
+            position: relative;
+            z-index: 10;
         }
         
         .controls select {
-            padding: 5px;
+            padding: 6px 15px;
             font-family: 'Playfair Display', serif;
-            border: 1px solid #2b2b2b;
-            background-color: #fdfbf7;
+            border: 2px solid #1a1a1a;
+            background-color: transparent;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
         }
 
         .content-columns {
             display: block;
             column-count: 2;
-            column-gap: 25px;
-            column-rule: 1px solid #bbb;
+            column-gap: 50px;
+            column-rule: 2px solid #1a1a1a;
             text-align: justify;
-            font-size: 0.95rem;
-            line-height: 1.4;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 850px) {
             .content-columns {
                 column-count: 1;
             }
             h1.title {
-                font-size: 3rem;
+                font-size: 4rem;
+            }
+            .newspaper {
+                padding: 25px;
             }
         }
 
         .post-container {
             break-inside: avoid-column;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
 
-        .content-columns h2 {
-            font-size: 1.3rem;
-            margin-top: 0;
-            line-height: 1.2;
-            border-bottom: 1px solid #2b2b2b;
-            padding-bottom: 5px;
-        }
-
-        .content-columns p {
+        .headline-box {
+            border-bottom: 2px solid #1a1a1a;
+            border-top: 2px solid #1a1a1a;
+            padding: 10px 0;
             margin-bottom: 15px;
-            text-indent: 15px;
+            text-align: center;
+        }
+
+        /* Estilo clássico de manchete */
+        .headline-box h2 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin: 0 0 5px 0;
+            line-height: 1.15;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .headline-box .post-date {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #444;
+        }
+
+        /* Subtítulos dentro das notícias */
+        .post-body h3, .post-body h4 {
+            font-size: 1.25rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #1a1a1a;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        /* Letra Capitular (Drop Cap) no primeiro parágrafo */
+        .post-body > p:first-of-type::first-letter {
+            float: left;
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 4.5rem;
+            line-height: 0.7;
+            padding-top: 8px;
+            padding-right: 8px;
+            padding-left: 0;
+            color: #1a1a1a;
+        }
+
+        .post-body p {
+            margin-bottom: 15px;
+            text-indent: 25px;
+        }
+
+        .post-body ul, .post-body ol {
+            margin-top: 5px;
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        .post-body li {
+            margin-bottom: 5px;
+        }
+
+        /* Efeito vintage para imagens (caso venham a existir) */
+        .post-body img {
+            max-width: 100%;
+            filter: sepia(0.5) contrast(1.2) grayscale(0.8);
+            border: 3px double #1a1a1a;
+            padding: 3px;
+            background: #f4ebd8;
+            margin: 10px 0;
         }
     </style>
 </head>
@@ -133,7 +208,7 @@
         </header>
 
         <div class="controls">
-            <label for="date-filter">Filtrar por data: </label>
+            <label for="date-filter">Filtrar por edição: </label>
             <select id="date-filter" onchange="filterPosts()">
                 <option value="all">Todas as datas</option>
             </select>
@@ -145,7 +220,6 @@
     </div>
 
     <script>
-        // Dados estáticos temporários extraídos de historico.json (usando fetch se rodar no servidor)
         let postsData = [];
 
         async function carregarHistorico() {
@@ -157,18 +231,19 @@
                 renderizarPosts(postsData);
             } catch (error) {
                 console.error("Erro ao carregar o histórico:", error);
-                document.getElementById('news-container').innerHTML = "<p>Não foi possível carregar as notícias de hoje.</p>";
+                document.getElementById('news-container').innerHTML = "<p>Não foi possível interceptar os telégrafos de hoje.</p>";
             }
         }
 
         function popularFiltro() {
             const filter = document.getElementById('date-filter');
-            const datasUnicas = [...new Set(postsData.map(post => post.date))];
+            // Pega apenas a data (YYYY-MM-DD), cortando a hora, para não duplicar opções do mesmo dia
+            const datasUnicas = [...new Set(postsData.map(post => post.date.split(' ')[0]))];
             
             datasUnicas.sort().reverse().forEach(date => {
                 const option = document.createElement('option');
                 option.value = date;
-                option.textContent = date;
+                option.textContent = date.split('-').reverse().join('/'); // Formato DD/MM/YYYY
                 filter.appendChild(option);
             });
         }
@@ -178,7 +253,7 @@
             if (selectedDate === 'all') {
                 renderizarPosts(postsData);
             } else {
-                const filtrados = postsData.filter(post => post.date === selectedDate);
+                const filtrados = postsData.filter(post => post.date.startsWith(selectedDate));
                 renderizarPosts(filtrados);
             }
         }
@@ -188,7 +263,7 @@
             container.innerHTML = '';
             
             if (posts.length === 0) {
-                container.innerHTML = '<p>Nenhuma notícia encontrada para este filtro.</p>';
+                container.innerHTML = '<p>Nenhum relato encontrado nos arquivos desta data.</p>';
                 return;
             }
 
@@ -196,15 +271,18 @@
                 const article = document.createElement('div');
                 article.className = 'post-container';
                 article.innerHTML = `
-                    <h2>${post.title}</h2>
-                    <p><em>${post.date}</em></p>
-                    <p>${post.content}</p>
+                    <div class="headline-box">
+                        <h2>${post.title}</h2>
+                        <span class="post-date">${post.date}</span>
+                    </div>
+                    <div class="post-body">
+                        ${post.content}
+                    </div>
                 `;
                 container.appendChild(article);
             });
         }
 
-        // Iniciar
         carregarHistorico();
     </script>
 </body>
