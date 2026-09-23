@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "date": "2026-09-23 01:10",
+      "title": "Resumo do Brasil",
+      "content": "<h3>\u00daltimas Not\u00edcias</h3><p>Resumo dos eventos mais relevantes do Brasil.</p><ul><li><a href='https://www.brasildefato.com.br/ultimas-noticias/'>\u00daltimas Not\u00edcias | Brasil de Fato</a>: Novo acordo entre Trump e extrema direita da Am\u00e9rica Latina busca ampliar inger\u00eancia na regi\u00e3o.</li><li><a href='https://www.brasildefato.com.br/2026/07/14/noticias-feitas-com-ia-quais-sao-os-riscos-reais/'>Not\u00edcias feitas com IA: quais s\u00e3o os riscos reais</a>: Estudos indicam aumento na divulga\u00e7\u00e3o de conte\u00fados falsos gerados por IA no Brasil.</li><li><a href='https://www.redebrasilatual.com.br/'>TVT News</a>: Bernie Sanders defende apoio \u00e0 soberania do Brasil em encontro com Lula, abordando desigualdade e conflitos internacionais.</li></ul>"
+    },
+    {
       "date": "2026-09-23 01:01",
       "title": "Relat\u00f3rio Open Source Di\u00e1rio",
       "content": "<h1>Relat\u00f3rio Open Source Di\u00e1rio</h1><h2>Not\u00edcias Recentes</h2><ul><li><a href='https://openworld.news'>Open World News</a>: Explora os avan\u00e7os mais recentes nos fluxos de trabalho de aprendizado de m\u00e1quina, destacando inova\u00e7\u00f5es pr\u00e1ticas como o pacote @huggingface/transformers-structured-output, que facilita a constru\u00e7\u00e3o de aplica\u00e7\u00f5es confi\u00e1veis em grandes modelos de linguagem diretamente no navegador.</li><li><a href='https://pantheon.io/about/open-source'>Pantheon</a>: Mostra o impacto do open-source em v\u00e1rias ind\u00fastrias, incluindo educa\u00e7\u00e3o e tecnologia, com casos de uso que v\u00e3o desde administra\u00e7\u00e3o de m\u00faltiplos sites at\u00e9 personaliza\u00e7\u00e3o de experi\u00eancias.</li><li><a href='https://news.ycombinator.com/news'>Hacker News</a>: \u00daltimos t\u00f3picos incluem o lan\u00e7amento do GPT-6 e cr\u00edticas a leis propostas na Austr\u00e1lia sobre algoritmos.</li></ul><p>Para mais informa\u00e7\u00f5es e detalhes, acesse as fontes citadas.</p>"
