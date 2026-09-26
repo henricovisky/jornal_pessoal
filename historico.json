@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "date": "2026-09-26 01:01",
+      "title": "Relat\u00f3rio Open Source Di\u00e1rio",
+      "content": "# Relat\u00f3rio Di\u00e1rio sobre Open Source\n\n## 1. Open Source Funding Models Face Reckoning as AI Agents Flood Maintainers\n- **Data**: Google\u2019s latest open source roundup revela a lacuna de financiamento que suporta uma economia de ,8 trilh\u00f5es. Os mantenedores frequentemente trabalham sem uma compensa\u00e7\u00e3o fi\u00e1vel. Um destaque no blog do Google sugere que os registradores de pacotes comerciais deveriam direcionar royalties autom\u00e1ticos para as consequ\u00eancias da \u00e1rvore de depend\u00eancias.\n- **Link**: [Leia mais aqui](https://webpronews.com/open-source-funding-models-face-reckoning-as-ai-agents-flood-maintainers)\n\n## 2. Open Source Apps to Grow Your Business\n- **Odoo**: Odoo \u00e9 uma cole\u00e7\u00e3o de aplicativos de neg\u00f3cios baseados na web, incluindo CRM e gerenciadores de sites. \u00c9 um exemplo de como aplicativos de c\u00f3digo aberto podem ajudar empresas a crescer\n- **Link**: [Descubra o Odoo no GitHub](https://github.com/odoo/odoo?tab=readme-ov-file)\n\n## 3. Ferramentas de Produtividade de C\u00f3digo Aberto\n- **Super Productivity**: Um gestor de tarefas de c\u00f3digo aberto que foca na privacidade, permitindo gerenciamento de tarefas offline com modo de foco.\n- **Link**: [Super Productivity](https://super-productivity.com/)\n\n## 4. Aplicativos de Produtividade Favoritos\n- **A coleta** de aplicativos de produtividade em c\u00f3digo aberto como Tomboy para anota\u00e7\u00f5es simples e v\u00e1rios outros listados no Opensource.com\n- **Link**: [Leia mais sobre aplicativos de produtividade](https://opensource.com/article/21/1/open-source-productivity-apps)"
+    },
+    {
       "date": "2026-09-25 01:30",
       "title": "Lei do Dia",
       "content": "<p>A quinta lei do poder \u00e9:<br><strong>Lei 5: Muito"
