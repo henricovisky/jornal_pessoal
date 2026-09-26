@@ -1,6 +1,11 @@
 {
   "posts": [
     {
+      "date": "2026-09-26 10:46",
+      "title": "Post de Teste",
+      "content": "<p>Teste de suporte a arquivo no add_post</p>"
+    },
+    {
       "date": "2026-09-26 01:21",
       "title": "Resumo Mundial",
       "content": "<h3>Resumo de Notícias Mundiais</h3><p>1. <strong>Trump manda reduzir exercícios militares com a Coreia do Sul</strong>: A decisão foi anunciada em um clima de tensões políticas. <a href='https://www.dw.com/pt-br/noticias/s-7111'>Leia mais</a>.</p><p>2. <strong>Cientistas tentam provocar terremoto inédito nos Alpes suíço</strong>: Pesquisadores da ETH Zurique estão buscando entender mais sobre a atividade sísmica. <a href='https://www.dw.com/pt-br/noticias/s-7111'>Leia mais</a>.</p><p>3. <strong>Desastres naturais atingem várias regiões</strong>: Inundações severas foram relatadas em diversas áreas, causando estragos. <a href='https://www.bbc.com/mundo'>Leia mais</a>.</p><p>4. <strong>Atentados continuam a marcar tensões no Oriente Médio</strong>: A violência e a instabilidade estão em ascensão. <a href='https://www.bbc.com/mundo'>Leia mais</a>.</p><p>5. <strong>Novas políticas climáticas sendo discutidas na ONU</strong>: As negociações estão em andamento para enfrentar a crise climática global. <a href='https://www.bbc.com/mundo'>Leia mais</a>.</p>"
