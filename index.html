@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Vintage Gazette</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=UnifrakturMaguntia&display=swap');
 
@@ -270,13 +271,16 @@
             posts.forEach(post => {
                 const article = document.createElement('div');
                 article.className = 'post-container';
+                const bodyHtml = (typeof marked !== 'undefined' && typeof marked.parse === 'function')
+                    ? marked.parse(post.content || '')
+                    : (post.content || '');
                 article.innerHTML = `
                     <div class="headline-box">
                         <h2>${post.title}</h2>
                         <span class="post-date">${post.date}</span>
                     </div>
                     <div class="post-body">
-                        ${post.content}
+                        ${bodyHtml}
                     </div>
                 `;
                 container.appendChild(article);
