@@ -208,11 +208,24 @@
             <div class="sub-header">"Verdade, Honra e Notícias para Todos os lares"</div>
         </header>
 
-        <div class="controls">
-            <label for="date-filter">Filtrar por edição: </label>
-            <select id="date-filter" onchange="filterPosts()">
-                <option value="all">Todas as datas</option>
-            </select>
+        <div class="controls" style="display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap;">
+            <div>
+                <label for="date-filter">Filtrar por edição: </label>
+                <select id="date-filter" onchange="filterPosts()">
+                    <option value="all">Todas as datas</option>
+                </select>
+            </div>
+            <div>
+                <label for="topic-filter">Filtrar por caderno: </label>
+                <select id="topic-filter" onchange="filterPosts()">
+                    <option value="all">Todos os cadernos</option>
+                    <option value="brasil">Brasil</option>
+                    <option value="mundo">Mundial</option>
+                    <option value="opensource">Open Source</option>
+                    <option value="leis">48 Leis do Poder</option>
+                    <option value="liturgia">Liturgia & Fé</option>
+                </select>
+            </div>
         </div>
 
         <div class="content-columns" id="news-container">
@@ -249,14 +262,29 @@
             });
         }
 
+        function matchTopic(title, topic) {
+            if (!title) return false;
+            const t = title.toLowerCase();
+            if (topic === 'all') return true;
+            if (topic === 'brasil') return t.includes('brasil');
+            if (topic === 'mundo') return t.includes('mundial') || t.includes('mundo') || t.includes('global');
+            if (topic === 'opensource') return t.includes('open source') || t.includes('opensource');
+            if (topic === 'leis') return t.includes('lei');
+            if (topic === 'liturgia') return t.includes('liturgia') || t.includes('igreja');
+            return true;
+        }
+
         function filterPosts() {
             const selectedDate = document.getElementById('date-filter').value;
-            if (selectedDate === 'all') {
-                renderizarPosts(postsData);
-            } else {
-                const filtrados = postsData.filter(post => post.date.startsWith(selectedDate));
-                renderizarPosts(filtrados);
-            }
+            const selectedTopic = document.getElementById('topic-filter').value;
+            
+            const filtrados = postsData.filter(post => {
+                const matchDate = (selectedDate === 'all') || post.date.startsWith(selectedDate);
+                const matchTop = matchTopic(post.title, selectedTopic);
+                return matchDate && matchTop;
+            });
+            
+            renderizarPosts(filtrados);
         }
 
         function renderizarPosts(posts) {
